@@ -1,164 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title> Results</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/addstyle.css" />
-
-
+    <title></title>
 </head>
 <body>
-    <h2> Connect to internet to run this example</h2>
-    <% var data = JSON.stringify(dataPoints); %>
+    <h2> Elapsed time=<%= elapsedTime %> </h2>
+    <h2> Loss value = <%= lossValue %> </h2>
 
-    <h4> data:  <%= data %> </h4>
-    <h4> Prediction result: <%= predictionResult %> </h4>
-    <h4> a= <%= a %></h4>
-    <h4> b= <%= b %></h4>
-
-    <div class="canvas">
-        <canvas id="myChart" width="600" height="600"></canvas>
-    </div>
-
-    <script>
-
-        var ctx = document.getElementById("myChart").getContext('2d');
-
-        // parse data values to array
-        let values = <%- JSON.parse(JSON.stringify(data)) %>
-        console.log(values);
-        //console.log(<%= data %>);
-        
-        
-
-        // line points:  (0,b) and (1, a+b)        
-        // Our labels along the x-axis
-        var point1 = { x: 0, y: <%= b %>};
-        var point2 = { x: 1, y: <%= a + b %>};
-        //        
-        console.log("point 1: ",point1);
-        console.log("point 2: ", point2);
-        //
-        var a = <%= a %>;
-        var b = <%= b %>;
-        var aboveLine =[];
-        var belowLine =[];
-        //
-        var ii = -1;
-        var jj = -1;
-        //collect points above line
-        for (i = 0; i < values.length; i++)
-        {
-            y = a * values[i].x + b;
-            if (values[i].y > y) {
-                ii = ii + 1;
-                aboveLine[ii] = values[i];
-            }
-            else {
-                jj = jj + 1;
-                belowLine[jj] = values[i];
-            }
-  
-        }
-        // End Defining data
-        //
-        //chart drawing
-        var options = {
-            responsive: true, // Instruct chart js to respond nicely.
-            maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
-            title: {
-                display: true,
-                text: 'Perceptron Data Chart'
-            },
-
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        min: -0.1,
-                        max: 1.1,
-                        stepSize: 0.1
-                    },
-                    type: 'linear',
-                    position: 'bottom',
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'X axis label'
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        min: -0.11,
-                        max: 1.1,
-                        stepSize: 0.1
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Y axis label'
-                    }
-                }]
-            }
-        
-        };
-        var myChart = new Chart(ctx, {
-            ///type: 'scatter',
-            data: {
-
-                labels: ["point 1", "point 2", "point 3", "point 4", "point 5", "point 6", "point 7"],
-                
-                datasets: [         
-                    {
-                        type: 'scatter',
-                        label: 'Friendly animals', // Name the series
-                        pointStyle: 'circle',
-                        radius: 5,
-                        borderWidth: 2,
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        //pointHighlightFill: "#fff",
-                        //pointHighlightStroke: "rgba(220,220,220,1)",
-                        borderColor: '#2196f3', // Add custom color border
-                        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                        data: aboveLine, //<%= dataPoints %>, // Specify the data values array
-                        showLine: false
-                    },
-                    {
-                        type: 'scatter',
-                        label: 'Not Friendly Animals', // Name the series
-                        pointStyle: 'cross',
-                        radius: 5,
-                        borderWidth: 2,
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        //pointHighlightFill: "#fff",
-                        //pointHighlightStroke: "rgba(220,220,220,1)",
-                        borderColor: '#FF0000', // Add custom color border fro label
-                        backgroundColor: '#FF0000', // Add custom color background (Points and Fill)
-                        data: belowLine, //<%= dataPoints %>, // Specify the data values array
-                        showLine: false
-                    },
-                    {
-                        type: 'line',
-                        label: 'Perceptron Line',
-                        data: [point1, point2],
-                        fill: false,
-                        borderColor: '#D196f3',
-                        backgroundColor: '#D196f3'
-                    }
-                ]
-            },
-            options: options
-        });
-        
-
-        
-
-    </script>
+    <h2> <%= resultForData1 %> </h2>
+    <h2> <%= resultForData2 %> </h2>
+    <h2> <%= resultForData3 %> </h2>
 
 
 </body>
