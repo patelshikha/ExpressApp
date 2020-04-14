@@ -1,18 +1,22 @@
 {
-  "name": "simple-perceptron-test",
+  "name": "ShikhaPatel_COMP308_Lab04",
   "version": "0.0.0",
-  "description": "SimplePerceptronTest",
+  "description": "COMP308_Lab4_Iris",
   "main": "server.js",
   "author": {
-    "name": "inika"
+    "name": ""
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.7.0",
+    "@tensorflow/tfjs-node": "^1.7.0",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "compression": "^1.7.4",
+    "csvtojson": "^2.0.8",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "method-override": "^3.0.0",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

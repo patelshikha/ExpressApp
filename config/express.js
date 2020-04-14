@@ -1,4 +1,6 @@
-﻿// Load the module dependencies
+// express.js – Express app initialization code
+//
+// Load the module dependencies
 const config = require('./config');
 const express = require('express');
 const morgan = require('morgan');
@@ -8,7 +10,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 // Define the Express configuration method
-module.exports = function () {
+module.exports = function() {
     // Create a new Express application instance
     const app = express();
 
